@@ -4,29 +4,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+;
 
-@SpringBootTest
 class StringUtilsTest {
 
-	@Autowired
-	private StringUtils stringUtils;
+	
 	
 	@Test
 	void test1() {
-		String result1 = stringUtils.toSnakeCase("aaa");
+		String result1 = StringUtils.toSnakeCase("aaa");
 		assertEquals("aaa",result1,"aaa→aaa");
 	}
 	
 	@Test
 	void test2() {
-		String result2 = stringUtils.toSnakeCase("HelloWorld");
+		String result2 = StringUtils.toSnakeCase("HelloWorld");
 		assertEquals("hello_world",result2,"HelloWorld→hello_world");
 	}
 	
 	@Test
 	void test3() {
-		String result3 = stringUtils.toSnakeCase("practiceJunit");
+		String result3 = StringUtils.toSnakeCase("practiceJunit");
 		assertEquals("practice_junit",result3,"practiceJunit→practice_junit");
 	}
 	
