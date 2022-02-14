@@ -5,13 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
 class RangeTest {
 
 	Range range;
 
 	@DisplayName("min=0.0,max=10.5のRangeの時の各テスト")
-	@Test
+	@ParameterizedTest
 	public void test1() {
 		range = new Range(0.0, 10.5);
 
