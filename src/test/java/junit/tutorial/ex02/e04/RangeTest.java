@@ -24,5 +24,20 @@ class RangeTest {
 		assertFalse(range.contains(10.6));
 
 	}
+	
+	@DisplayName("min=-5.1,max=5.1のRangeの時の各テスト")
+	@Test
+	public void test2() {
+		range = new Range(-5.1, 5.1);
+
+		assertFalse(range.contains(-5.2));
+
+		assertTrue(range.contains(-5.1));
+
+		assertTrue(range.contains(5.1));
+
+		assertFalse(range.contains(5.2));
+
+	}
 
 }
