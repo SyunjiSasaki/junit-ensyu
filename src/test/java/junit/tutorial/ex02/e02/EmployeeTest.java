@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,43 +14,41 @@ import org.junit.jupiter.api.Test;
 class EmployeeTest {
 
 	Employee employee;
-	FileInputStream input;
+	FileInputStream Input;
 	File file;
+	List<Employee> list;
 
 	@BeforeEach
-	public void set() {
+	public void set() throws IOException {
 		employee = new Employee();
-
+		
 		file = new File(
 				"C:\\env\\spring-workspace\\junit-ensyu\\src\\main\\java\\junit\\tutorial\\ex02\\e02\\Employee.txt");
 
-		// InputStreamに変換
-		try {
-			input = new FileInputStream(file);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Input = new FileInputStream(file);
 
-		employee.load(input);
+		list = employee.load(Input);
 	}
 
 	@DisplayName("FirstNameがIchiroかどうかのテスト")
 	@Test
 	public void test1() {
-		assertEquals("Ichiro", employee.getFirstName(), "FirstNameがIchiro");
+
+		assertEquals("Ichiro",list.get(0).getFirstName(), "FirstNameがIchiro");
 	}
 
 	@DisplayName("LastNameがTanakaかどうかのテスト")
 	@Test
 	public void test2() {
-		assertEquals("Tanaka", employee.getLastName(), "LastNameがTanaka");
+
+		assertEquals("Tanaka", list.get(0).getLastName(), "LastNameがTanaka");
 	}
 
 	@DisplayName("Emailがichiro@example.comかどうかのテスト")
 	@Test
 	public void test3() {
-		assertEquals("ichiro@example.com", employee.getEmail(), "Emailがichiro@example.com");
+
+		assertEquals("ichiro@example.com", list.get(0).getEmail(), "Emailがichiro@example.com");
 	}
 
 }
